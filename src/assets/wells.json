@@ -1,0 +1,38 @@
+[
+    {
+        "name": "Well #1",
+        "age": 4,
+        "temperature": 150,
+        "shutdowns": 6
+    },
+    {
+        "name": "Well #2",
+        "age": 7,
+        "temperature": 143,
+        "shutdowns": 2
+    },
+    {
+        "name": "Well #3",
+        "age": 5,
+        "temperature": 151,
+        "shutdowns": 5
+    },
+    {
+        "name": "Well #4",
+        "age": 1,
+        "temperature": 157,
+        "shutdowns": 0
+    },
+    {
+        "name": "Well #5",
+        "age": 8,
+        "temperature": 149,
+        "shutdowns": 14
+    },
+    {
+        "name": "Well #6",
+        "age": 3,
+        "temperature": 144,
+        "shutdowns": 6
+    }
+]

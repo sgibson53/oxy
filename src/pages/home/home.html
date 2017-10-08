@@ -1,14 +1,25 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
+    <img id="logo" src="./assets/oxy-logo.png">
+    <title>Home</title>
+    <ion-buttons end>
+      <button color="primary" ion-button (click)="logout()">
+        <ion-icon name="log-out"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <div class="well-wrapper">
+    <ion-card *ngFor="let well of wells"> 
+      <ion-card-header>{{ well.name }}</ion-card-header>
+      <ion-card-content>
+        Age: {{ well.age }} 
+        Temp: {{ well.temperature }}
+        Shutdowns: {{ well.shutdowns }}
+      </ion-card-content>
+    </ion-card>
+  </div>
+  
 </ion-content>

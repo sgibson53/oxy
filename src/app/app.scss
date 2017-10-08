@@ -14,3 +14,23 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+
+// PWA View
+// .card-md {
+//     width: calc(33% - 24px);
+//     height: 150px;
+// }
+
+// .card-md + ion-card {
+//     margin: 12px;
+// }
+
+// Mobile
+// .card-ios {
+//     width: calc(50% - 24px);
+// }
+
+// .card-ios + ion-card {
+//     margin: 12px;
+// }

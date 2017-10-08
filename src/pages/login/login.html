@@ -1,0 +1,50 @@
+
+<div class="login-wrapper">
+  <ion-header>
+
+    <ion-navbar>
+      <ion-title>Login</ion-title>
+    </ion-navbar>
+
+  </ion-header>
+
+  <ion-content padding>
+    
+    <ion-card class="login-card">
+        <img class="oxy-logo" src="./assets/oxy-logo.png">
+        <div class="content-container">
+          <form autocomplete="off" (ngSubmit)="login()" [formGroup]="loginForm">
+            <ion-row>
+              <ion-col>
+                <ion-item>
+                  <ion-label floating>Email</ion-label>
+                  <ion-input formControlName="username" type="email" [(ngModel)]="username"></ion-input>
+                  
+                </ion-item>
+                <ion-item *ngIf="!loginForm.controls.username.valid && loginForm.controls.username.dirty && submitAttempt">
+                  <p >Bad</p>
+                </ion-item>
+                <ion-item>
+                  <ion-label floating>Password</ion-label>
+                  <ion-input formControlName="password" type="password" [(ngModel)]="password"></ion-input>
+                    
+                </ion-item>
+                <ion-item *ngIf="!loginForm.controls.password.valid && loginForm.controls.username.dirty && submitAttempt">
+                  <p >Bad</p>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+                <button ion-button class="submit-btn" full (click)="onSubmit()">Login</button>
+              </ion-col>
+            </ion-row>  
+          </form>
+        </div>
+    </ion-card>
+  </ion-content>
+</div>
+
+
+
