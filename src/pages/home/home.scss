@@ -1,32 +1,76 @@
 page-home {
+    .scroll-content {
+        background: #DDD;
+    }
 
     #logo {
-        width: 30px;
+        width: 40px;
+        margin-left: 15px;
     }
 
-    .well-wrapper {
-        display: flex;
-        justify-content: space-around;
-        flex-wrap: wrap;
-
-        ion-card {
-            display: inline-block;
-            opacity: 0;
-            transform: scale(1);
-            animation-name: animateInWell;
-            animation-duration: .60s;
-            animation-fill-mode: forwards;
-            animation-timing-function: ease-in;
+    #logout-button {
+        span {
+            margin-right: 5px;
+            font-size: 1.2em;
         }
     }
-    
-}
 
-@keyframes animateInWell {
-    0% { opacity: 0; transform: scale(.5)}
-    50% {transform: scale(1.1)}
-    57% {opacity: 1;}
-    70% {transform: scale(.96)}
-    86% {transform: scale(1.02)}
-    100% {opacity: 1; transform: scale(1)}
+    .well-wrapper {        
+
+        ion-grid {
+            max-width: 2000px;
+        }
+
+        ion-card {
+            border-radius: 5px;
+            cursor: pointer;
+
+            ion-card-header {
+                background: white;
+                font-size: 2em;
+                text-align: center;
+                color: #666;
+            }
+
+            ion-card-content {
+                font-size: 1.8em;
+                background: #EEE;
+                padding: 0;
+
+                .stat {
+                    margin: auto;
+                    display: flex;
+                    height: 60px;
+                    color: white;
+                    line-height: 60px;
+                    justify-content: space-between;
+                    
+
+                    ion-icon {
+                        margin: 0 10px 0 15px;
+                        position: relative;
+                        top: 12px;
+                    }
+
+                    span {
+                        padding: 0 10px;
+                    }
+
+                    &:nth-child(1) {background: #CDD9E3;}
+                    &:nth-child(2) {background: #94A9BA;}
+                    &:nth-child(3) {background: #778FA1;}
+                    &:nth-child(4) {background: #4F6C82;}
+
+                }
+
+                
+            }
+
+            &:hover {
+                ion-card-header {
+                    background: #EEE;
+                }
+            }
+        }
+    }
 }

@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -8,6 +9,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { WellsProvider } from '../providers/well/well';
+import { WellModalComponent } from '../components/well-modal/well-modal'
 
 import { HttpModule } from '@angular/http';
 import { OAuthService } from 'angular-oauth2-oidc';
@@ -16,10 +18,12 @@ import { OAuthService } from 'angular-oauth2-oidc';
   declarations: [
     MyApp,
     HomePage,
-    LoginPage
+    LoginPage,
+    WellModalComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     HttpModule,
     IonicModule.forRoot(MyApp)
   ],
@@ -27,7 +31,8 @@ import { OAuthService } from 'angular-oauth2-oidc';
   entryComponents: [
     MyApp,
     HomePage,
-    LoginPage
+    LoginPage,
+    WellModalComponent
   ],
   providers: [
     OAuthService,

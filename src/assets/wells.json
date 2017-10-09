@@ -1,38 +1,51 @@
 [
     {
-        "name": "Well #1",
+        "name": "Well 1",
         "age": 4,
         "temperature": 150,
-        "shutdowns": 6
+        "shutdowns": 6,
+        "location": "Angleton, TX"
     },
     {
-        "name": "Well #2",
+        "name": "Well 2",
         "age": 7,
         "temperature": 143,
-        "shutdowns": 2
+        "shutdowns": 2,
+        "location": "Freeport, TX"
     },
     {
-        "name": "Well #3",
+        "name": "Well 3",
         "age": 5,
         "temperature": 151,
-        "shutdowns": 5
+        "shutdowns": 5,
+        "location": "Baytown, TX"
     },
     {
-        "name": "Well #4",
+        "name": "Well 4",
         "age": 1,
         "temperature": 157,
-        "shutdowns": 0
+        "shutdowns": 0,
+        "location": " Geismar, LA"
     },
     {
-        "name": "Well #5",
+        "name": "Well 5",
         "age": 8,
         "temperature": 149,
-        "shutdowns": 14
+        "shutdowns": 14,
+        "location": "Plaquemine, LA"
     },
     {
-        "name": "Well #6",
+        "name": "Well 6",
         "age": 3,
         "temperature": 144,
-        "shutdowns": 6
+        "shutdowns": 6,
+        "location": "La Porte, TX"
+    },
+    {
+        "name": "Well 7",
+        "age": 3,
+        "temperature": 144,
+        "shutdowns": 6,
+        "location": "Beaumont, TX"
     }
 ]

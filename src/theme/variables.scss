@@ -6,6 +6,7 @@
 $font-path: "../assets/fonts";
 
 
+
 // The app direction is used to include
 // rtl styles in your app. For more info, please see:
 // http://ionicframework.com/docs/theming/rtl-support/
@@ -23,8 +24,6 @@ $app-direction: ltr;
 // http://ionicframework.com/docs/theming/overriding-ionic-variables/
 
 
-
-
 // Named Color Variables
 // --------------------------------------------------
 // Named colors makes it easy to reuse colors on various components.
@@ -38,8 +37,14 @@ $colors: (
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,
-  dark:       #222
+  dark:       #222,
+  oxy-primary: #236CB8,
+  oxy-dark: #272e49,
+  oxy-light: #669fd1,
+  oxy-red: crimson
 );
+
+
 
 
 // App iOS Variables

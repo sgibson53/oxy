@@ -1,28 +1,39 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NavController, NavParams } from 'ionic-angular';
+import { trigger, style, animate, transition } from '@angular/animations';
+import { NavController, NavParams, ToastController } from 'ionic-angular';
 import { OAuthService } from 'angular-oauth2-oidc';
 
 import { HomePage } from '../home/home';
 import { EmailValidator } from '../../validators/email';
 
-// This is because you're including an external JS library in a TypeScript project
 declare const OktaAuth: any;
 
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',
+  animations: [
+    trigger('slideIn', [
+      transition(':enter', [
+        style({height: 0, opacity: 0}),
+        animate('300ms', style({height: '*', opacity: 1}))
+      ]),
+      transition(':leave', [
+        style({height: '*', opacity: 1}),
+        animate('300ms', style({height: 0, opacity: 0}))
+      ])
+    ])
+  ]
 })
+
 export class LoginPage {
 
   loginForm: FormGroup;
   private username: string;
   private password: string;
-  private error: string;
-
   submitAttempt: boolean = false;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder, private oauthService: OAuthService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder, private oauthService: OAuthService, private toastController: ToastController) {
     this.loginForm = formBuilder.group({
       username: ['', Validators.compose([Validators.required, EmailValidator.isValid])],
       password: ['', Validators.compose([Validators.minLength(8), Validators.required])]
@@ -33,15 +44,6 @@ export class LoginPage {
     oauthService.scope = 'openid profile email';
     oauthService.oidc = true;
     oauthService.issuer = 'https://dev-745257.oktapreview.com';
-
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
-  }
-
-  onSubmit() {
-    
   }
 
   login(): void {
@@ -49,7 +51,6 @@ export class LoginPage {
     this.submitAttempt = true;
 
     if (this.loginForm.valid) {
-      console.log("Valid form")
 
       this.oauthService.createAndSaveNonce().then(nonce => {
 
@@ -63,6 +64,7 @@ export class LoginPage {
           username: this.username,
           password: this.password
         }).then((response) => {
+
           if (response.status === 'SUCCESS') {
             authClient.token.getWithoutPrompt({
               nonce: nonce,
@@ -72,14 +74,20 @@ export class LoginPage {
             }).then((tokens) => {
               localStorage.setItem('access_token', tokens[1].accessToken);
               this.oauthService.processIdToken(tokens[0].idToken, tokens[1].accessToken);
-              this.navCtrl.push(HomePage);
+              this.navCtrl.setRoot(HomePage);
             }).catch(error => console.error(error));
+            
           } else {
             throw new Error('Something went wrong. ' + response.status);
           }
+
         }).fail((error) => {
           console.error(error);
-          this.error = error.message;
+          let invalidLogin = this.toastController.create({
+            message: "Authorization failed! Username or password invalid.",
+            duration: 2500
+          })
+          invalidLogin.present();
         });
       });
     }

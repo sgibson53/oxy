@@ -3,8 +3,8 @@
     <img id="logo" src="./assets/oxy-logo.png">
     <title>Home</title>
     <ion-buttons end>
-      <button color="primary" ion-button (click)="logout()">
-        <ion-icon name="log-out"></ion-icon>
+      <button id="logout-button" color="oxy-primary" ion-button (click)="logout()">
+        <span>Logout</span> <ion-icon name="log-out"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
@@ -12,14 +12,38 @@
 
 <ion-content padding>
   <div class="well-wrapper">
-    <ion-card *ngFor="let well of wells"> 
-      <ion-card-header>{{ well.name }}</ion-card-header>
-      <ion-card-content>
-        Age: {{ well.age }} 
-        Temp: {{ well.temperature }}
-        Shutdowns: {{ well.shutdowns }}
-      </ion-card-content>
-    </ion-card>
+    <ion-grid>
+      <ion-row [@bubbleIn]="wells.length">
+        <ion-col col-12 col-sm-4 col-lg-3 *ngFor="let item of wells">
+          <ion-card (click)="presentModal(item)">
+            <ion-card-header>{{ item.name }}</ion-card-header>
+            <ion-card-content>
+
+              <div class="stat">
+                <ion-icon name="pin"></ion-icon>
+                <span>{{item.location}}</span>
+              </div>
+
+              <div class="stat">
+                <ion-icon name="clock"></ion-icon>
+                <span>{{item.age}} years</span>
+              </div>
+              
+              <div class="stat">
+                <ion-icon name="thermometer"></ion-icon>
+                <span>{{item.temperature}}&#176;C</span>
+              </div>
+              
+              <div class="stat">
+                <ion-icon name="build"></ion-icon>
+                <span>{{item.shutdowns}} shutdowns</span>
+              </div>
+              
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </div>
   
 </ion-content>

@@ -1,7 +1,9 @@
-    
 page-login {
     background: transparent;
-.login-wrapper {
+
+    
+
+    .login-wrapper {
         background: url('../assets/bg-mobile.png');
         background-size: cover;
         width: 100%;
@@ -24,20 +26,35 @@ page-login {
 
                 .content-container {
                     padding: 15px;
+
+                    ion-item {
+                        padding: 0;
+                        margin: 5px 0 5px 0;
+
+                        .item-inner {
+                            color: lightslategrey;
+                            font-size: 1.2em;
+
+                            input {
+                                outline: 0;
+                            }
+                        }
+                    }
+
+                    .invalid-input {
+                        color: color($colors, danger);
+                    }
                 }
             }
         }
-        
-        
     }
-    
 }
 
 @media screen and (min-height: 800px) and (min-width: 450px) {
     page-login {
 
         .login-wrapper {
-            background: url('../assets/bg-1x.png');
+            background: url('../assets/bg@1x.png');
 
             ion-header {
                 display: block;
@@ -50,6 +67,14 @@ page-login {
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
+        }
+    }
+}
+
+@media screen and (min-width: 3000px) {
+    page-login {
+        .login-wrapper {
+            background: url('../assets/bg@2x.png')
         }
     }
 }
