@@ -85,7 +85,7 @@ export class LoginPage {
           console.error(error);
           let invalidLogin = this.toastController.create({
             message: "Authorization failed! Username or password invalid.",
-            duration: 2500
+            duration: 3000
           })
           invalidLogin.present();
         });
