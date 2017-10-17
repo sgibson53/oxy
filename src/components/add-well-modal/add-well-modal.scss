@@ -26,7 +26,7 @@ add-well-modal {
             }
 
             ion-item:first-of-type {
-                padding-top: 10px;
+                padding-top: 5px 10px 10px 5px;
             }
 
             ion-item:last-of-type {
@@ -35,6 +35,7 @@ add-well-modal {
 
             .submit-btn {
                 width: 150px;
+                background-color: color($colors, oxy-light);
                 margin: 10px auto;
             }
         }

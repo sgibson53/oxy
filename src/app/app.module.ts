@@ -8,7 +8,6 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
-import { WellsProvider } from '../providers/well/well';
 import { WellModalComponent } from '../components/well-modal/well-modal'
 import { AddWellModalComponent } from '../components/add-well-modal/add-well-modal';
 
@@ -45,8 +44,7 @@ import { InMemoryDataService } from '../dev/in-memory-data/in-memory-data';
     OAuthService,
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
-    WellsProvider
+    {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
 export class AppModule {}
