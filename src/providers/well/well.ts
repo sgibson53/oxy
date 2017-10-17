@@ -5,8 +5,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class WellsProvider {
 
-  constructor(public http: Http) {
-  }
+  constructor(public http: Http) {}
 
   getWells() {
     return this.http.get('/assets/wells.json')

@@ -1,0 +1,42 @@
+add-well-modal {
+
+    .content-container {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        border-radius: 10px;
+        background: #405D76;
+        color: white;
+
+        .title {
+            width: 90%;
+            margin: auto;
+            padding: 15px;
+        }
+
+        form {
+            position: absolute;
+            width: 90%;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+
+            ion-item {
+                padding: 0 15px;
+            }
+
+            ion-item:first-of-type {
+                padding-top: 10px;
+            }
+
+            ion-item:last-of-type {
+                padding-bottom: 20px;
+            }
+
+            .submit-btn {
+                width: 150px;
+                margin: 10px auto;
+            }
+        }
+    }
+}

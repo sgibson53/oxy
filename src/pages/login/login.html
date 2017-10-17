@@ -22,7 +22,7 @@
                   <ion-label floating>Password</ion-label>
                   <ion-input formControlName="password" type="password" [(ngModel)]="password"></ion-input>
                 </ion-item>
-                <p class="invalid-input" *ngIf="!loginForm.controls.password.valid && loginForm.controls.username.dirty && submitAttempt" [@slideIn]>Password must be at least 8 characters.</p>
+                <p class="invalid-input" *ngIf="!loginForm.controls.password.valid && loginForm.controls.password.dirty && submitAttempt" [@slideIn]>Password must be at least 8 characters.</p>
               </ion-col>
             </ion-row>
             <ion-row>

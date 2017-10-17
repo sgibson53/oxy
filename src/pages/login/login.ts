@@ -64,7 +64,7 @@ export class LoginPage {
           username: this.username,
           password: this.password
         }).then((response) => {
-
+          console.log(response);
           if (response.status === 'SUCCESS') {
             authClient.token.getWithoutPrompt({
               nonce: nonce,
@@ -74,7 +74,7 @@ export class LoginPage {
             }).then((tokens) => {
               localStorage.setItem('access_token', tokens[1].accessToken);
               this.oauthService.processIdToken(tokens[0].idToken, tokens[1].accessToken);
-              this.navCtrl.setRoot(HomePage);
+              this.navCtrl.setRoot(HomePage, {firstName: response.user.profile.firstName});
             }).catch(error => console.error(error));
             
           } else {

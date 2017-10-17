@@ -15,15 +15,43 @@ page-home {
         }
     }
 
+    .topbar-left {
+        display: flex;
+        align-items: center;
+
+        div {
+            color: color($colors, oxy-primary);
+            margin-left: 20px;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+    }
+
     .well-wrapper {        
 
         ion-grid {
             max-width: 2000px;
+
+            ion-col {
+                min-height: 325px;
+            }
+        }
+
+        #addWellIcon {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: transparent;
+            font-size: 60px;
         }
 
         ion-card {
             border-radius: 5px;
             cursor: pointer;
+            position: relative;
+            top: 0;
+            transition: top .3s;
 
             ion-card-header {
                 background: white;
@@ -49,7 +77,7 @@ page-home {
                     ion-icon {
                         margin: 0 10px 0 15px;
                         position: relative;
-                        top: 12px;
+                        top: 15px;
                     }
 
                     span {
@@ -62,14 +90,11 @@ page-home {
                     &:nth-child(4) {background: #4F6C82;}
 
                 }
-
                 
             }
 
             &:hover {
-                ion-card-header {
-                    background: #EEE;
-                }
+                top: -7px;
             }
         }
     }

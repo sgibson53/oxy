@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 import { trigger, style, animate, transition, keyframes, stagger, query } from '@angular/animations';
-import { NavController, LoadingController, ModalController } from 'ionic-angular';
+import { NavController, LoadingController, ModalController, NavParams } from 'ionic-angular';
 import { OAuthService } from 'angular-oauth2-oidc'
-import { WellsProvider } from '../../providers/well/well';
+import { WellService } from '../../providers/well-service/well.service';
+import { Well } from '../../models/well';
 
 import { LoginPage } from '../login/login';
 import { WellModalComponent } from '../../components/well-modal/well-modal';
+import { AddWellModalComponent } from '../../components/add-well-modal/add-well-modal';
 
 @Component({
   selector: 'page-home',
@@ -25,7 +27,6 @@ import { WellModalComponent } from '../../components/well-modal/well-modal';
           ])
           )])
         ], {optional: true})
-        ,
       ])
     ])
   ]
@@ -33,29 +34,35 @@ import { WellModalComponent } from '../../components/well-modal/well-modal';
 
 export class HomePage {
 
-  wells = [];
+  wells: Well[] = [];
+  loadedWells: boolean = false;
+  firstName: string = this.navParams.get('firstName');
 
   constructor(
     public navCtrl: NavController, 
-    private wellsProvider: WellsProvider, 
+    public navParams: NavParams,
     public oauthService: OAuthService,
     public loadingCtrl: LoadingController,
-    public modalCtrl: ModalController) {
+    public modalCtrl: ModalController,
+    private wellService: WellService) {
 
   }
 
   ionViewDidLoad() {
+    this.getWells();
+  }
+
+  getWells(): void {
     let loading = this.loadingCtrl.create({
       content: 'Loading Wells...'
     });
     loading.present();
-    this.wellsProvider.getWells()
-    .subscribe(res => {      
-      loading.dismiss()
-      for (let i = 0; i < res.length; i++) {
-        this.wells.push(res[i])
-      }
-   }); 
+    this.wellService.getWells().then(wells => {
+      console.log(wells)
+      this.wells = wells
+      this.loadedWells = true;
+      loading.dismiss();
+    });
   }
 
   logout() {
@@ -67,6 +74,14 @@ export class HomePage {
   presentModal(item) {
     const wellModal = this.modalCtrl.create(WellModalComponent, {well: item.name});
     wellModal.present();
+  }
+
+  presentAddWellModal() {
+    const addWellModal = this.modalCtrl.create(AddWellModalComponent);
+    addWellModal.onDidDismiss(well => {
+       if (well) this.wells.push(well);
+    });
+    addWellModal.present();
   }
 
 }

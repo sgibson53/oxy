@@ -1,7 +1,12 @@
 <ion-header>
   <ion-navbar>
-    <img id="logo" src="./assets/logo.png">
+    
     <title>Home</title>
+    <div class="topbar-left">
+      <img id="logo" src="./assets/logo.png">
+      <div>Hello, {{firstName}}!</div>
+    </div>
+      
     <ion-buttons end>
       <button id="logout-button" color="oxy-primary" ion-button (click)="logout()">
         <span>Logout</span> <ion-icon name="log-out"></ion-icon>
@@ -12,9 +17,9 @@
 
 <ion-content padding>
   <div class="well-wrapper">
-    <ion-grid>
+    <ion-grid *ngIf="wells">
       <ion-row [@bubbleIn]="wells.length">
-        <ion-col col-12 col-sm-4 col-lg-3 *ngFor="let item of wells">
+        <ion-col col-12 col-sm-6 col-md-4 col-lg-3 *ngFor="let item of wells">
           <ion-card (click)="presentModal(item)">
             <ion-card-header>{{ item.name }}</ion-card-header>
             <ion-card-content>
@@ -42,8 +47,13 @@
             </ion-card-content>
           </ion-card>
         </ion-col>
+        <ion-col *ngIf="loadedWells" col-12 col-sm-6 col-md-4 col-lg-3>
+          <ion-icon class="ln-item" id="addWellIcon" name="add-circle" color="oxy-dark" (click)="presentAddWellModal()"></ion-icon>
+        </ion-col>
       </ion-row>
     </ion-grid>
   </div>
+
+  
   
 </ion-content>

@@ -15,6 +15,18 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
+input {
+    &:focus {
+        outline: none !important;
+    }
 
+    &:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0 30px white inset !important;
+    }
+}
+
+.modal-wrapper {
+    border-radius: 10px !important;
+}
 
 

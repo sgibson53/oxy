@@ -10,29 +10,36 @@ import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { WellsProvider } from '../providers/well/well';
 import { WellModalComponent } from '../components/well-modal/well-modal'
+import { AddWellModalComponent } from '../components/add-well-modal/add-well-modal';
 
 import { HttpModule } from '@angular/http';
 import { OAuthService } from 'angular-oauth2-oidc';
+
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService } from '../dev/in-memory-data/in-memory-data';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     LoginPage,
-    WellModalComponent
+    WellModalComponent,
+    AddWellModalComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     HttpModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    InMemoryWebApiModule.forRoot(InMemoryDataService)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
     LoginPage,
-    WellModalComponent
+    WellModalComponent,
+    AddWellModalComponent
   ],
   providers: [
     OAuthService,
